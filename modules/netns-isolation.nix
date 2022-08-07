@@ -295,6 +295,7 @@ in {
       };
       minimint = {
         id = 31;
+        connections = [ "bitcoind" ];
       };
       fedimint-gateway = {
         id = 32;
