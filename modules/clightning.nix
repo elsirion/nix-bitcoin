@@ -104,7 +104,7 @@ let
 
   inherit (config.services) bitcoind;
 
-  network = bitcoind.makeNetworkName "bitcoin" "regtest";
+  network = bitcoind.makeNetworkName "bitcoin" "regtest" "signet";
   configFile = pkgs.writeText "config" ''
     network=${network}
     bitcoin-datadir=${bitcoind.dataDir}
