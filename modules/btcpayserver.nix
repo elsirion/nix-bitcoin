@@ -199,7 +199,7 @@ in {
 
     systemd.services.btcpayserver = let
       nbExplorerUrl = "http://${nbLib.addressWithPort cfg.nbxplorer.address cfg.nbxplorer.port}/";
-      nbExplorerCookie = "${cfg.nbxplorer.dataDir}/${bitcoind.makeNetworkName "Main" "RegTest"}/.cookie";
+      nbExplorerCookie = "${cfg.nbxplorer.dataDir}/${bitcoind.makeNetworkNameOld "Main" "RegTest"}/.cookie";
       configFile = builtins.toFile "config" (''
         network=${bitcoind.network}
         bind=${cfg.btcpayserver.address}
@@ -211,7 +211,7 @@ in {
       '' + optionalString (cfg.btcpayserver.rootpath != null) ''
         rootpath=${cfg.btcpayserver.rootpath}
       '' + optionalString (cfg.btcpayserver.lightningBackend == "clightning") ''
-        btclightning=type=clightning;server=unix:///${cfg.clightning.dataDir}/${bitcoind.makeNetworkName "bitcoin" "regtest"}/lightning-rpc
+        btclightning=type=clightning;server=unix:///${cfg.clightning.dataDir}/${bitcoind.makeNetworkNameOld "bitcoin" "regtest"}/lightning-rpc
       '' + optionalString cfg.btcpayserver.lbtc ''
         chains=btc,lbtc
         lbtcexplorerurl=${nbExplorerUrl}

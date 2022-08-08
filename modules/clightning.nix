@@ -102,7 +102,7 @@ let
   nbLib = config.nix-bitcoin.lib;
   nbPkgs = config.nix-bitcoin.pkgs;
 
-  network = config.services.bitcoind.makeNetworkName "bitcoin" "regtest";
+  network = config.services.bitcoind.makeNetworkName "bitcoin" "regtest" "signet";
   configFile = pkgs.writeText "config" ''
     network=${network}
     bitcoin-datadir=${config.services.bitcoind.dataDir}
