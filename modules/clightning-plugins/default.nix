@@ -18,6 +18,7 @@ in {
     ./prometheus.nix
     ./summary.nix
     ./zmq.nix
+    ./fedimint-gw.nix
   ];
 
   inherit options;
