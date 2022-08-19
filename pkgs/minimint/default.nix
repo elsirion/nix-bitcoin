@@ -8,11 +8,11 @@ rustPlatform.buildRustPackage rec {
   OPENSSL_LIB_DIR = "${pkgs.openssl.out}/lib";  
   LIBCLANG_PATH = "${pkgs.llvmPackages.libclang.lib}/lib";
    src = builtins.fetchGit {
-  url = "https://github.com/fedimint/minimint";
+  url = "https://github.com/elsirion/minimint";
   ref = "2022-08-signet";
-  rev = "a968f38ce5514f13ea7c908b4d881892d116211b";
+  rev = "54bbc6693802c43172d809059bd521c370f2b6d8";
   };
-  cargoSha256 = "sha256-Ao44FtmngLAODLWElx/L3VOc/QekX+XKdcy4RhUHkfs=";
+  cargoSha256 = "sha256-G2W8PnkIMyt4Xu4k8PR7MFKTKvJSzBaEh7e1vEyTJNo=";
   meta = with lib; {
     description = "Federated Mint Prototype";
     homepage = "https://github.com/fedimint/minimint";
