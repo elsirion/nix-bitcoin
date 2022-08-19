@@ -86,7 +86,7 @@ in {
       serviceConfig = nbLib.defaultHardening // {
         WorkingDirectory = cfg.dataDir;
         ExecStart = ''
-          ${cfg.package}/bin/server ${cfg.dataDir}/server-0.json ${cfg.dataDir}/mint-0.db
+          ${cfg.package}/bin/minimint ${cfg.dataDir}/server-0.json ${cfg.dataDir}/mint-0.db
         '';
         User = cfg.user;
         Group = cfg.group;
