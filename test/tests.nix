@@ -112,8 +112,8 @@ let
       tests.liquidd = cfg.liquidd.enable;
       services.liquidd.extraConfig = mkIf config.test.noConnections "connect=0";
 
-      tests.minimint = cfg.minimint.enable;
-      services.minimint.port = 5001;
+      tests.fedimint = cfg.fedimint.enable;
+      services.fedimint.port = 5001;
 
       tests.fedimint-gateway = cfg.fedimint-gateway.enable;
 
@@ -200,7 +200,7 @@ let
       services.charge-lnd.enable = true;
       services.electrs.enable = true;
       services.liquidd.enable = true;
-      services.minimint.enable = true;
+      services.fedimint.enable = true;
       services.fedimint-gateway.enable = true;
       services.btcpayserver.enable = true;
       services.joinmarket.enable = true;
@@ -247,7 +247,7 @@ let
       services.lightning-pool.enable = true;
       services.charge-lnd.enable = true;
       services.electrs.enable = true;
-      services.minimint.enable = true;
+      services.fedimint.enable = true;
       services.fedimint-gateway.enable = true;
       services.btcpayserver.enable = true;
       services.joinmarket.enable = true;

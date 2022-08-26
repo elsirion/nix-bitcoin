@@ -293,7 +293,7 @@ in {
       clightning-rest = {
         id = 30;
       };
-      minimint = {
+      fedimint = {
         id = 31;
         connections = [ "bitcoind" ];
       };
@@ -358,7 +358,7 @@ in {
 
     services.clightning-rest.address = netns.clightning-rest.address;
 
-    services.minimint.address = netns.minimint.address;
+    services.fedimint.address = netns.fedimint.address;
   }
   ]);
 }

@@ -4,8 +4,8 @@
   clightning = ./clightning.nix;
   default = ./default.nix;
   electrs = ./electrs.nix;
+  fedimint = ./fedimint.nix;
   liquid = ./liquid.nix;
-  minimint = ./minimint.nix;
   presets.secure-node = ./presets/secure-node.nix;
   rtl = ./rtl.nix;
   spark-wallet = ./spark-wallet.nix;

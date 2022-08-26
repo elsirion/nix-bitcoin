@@ -2,12 +2,12 @@
 
 with lib;
 let
-  options.services.minimint = {
+  options.services.fedimint = {
     enable = mkOption {
       type = types.bool;
       default = true;
       description = ''
-        Enable Minimint, a federated Chaumian e-cash mint backed
+        Enable Fedimint, a federated Chaumian e-cash mint backed
         by bitcoin with deposits and withdrawals that can occur on-chain
         or via Lightning.
       '';
@@ -25,32 +25,32 @@ let
     extraArgs = mkOption {
       type = types.separatedString " ";
       default = "";
-      description = "Extra command line arguments passed to minimint.";
+      description = "Extra command line arguments passed to fedimint.";
     };
     dataDir = mkOption {
       type = types.path;
-      default = "/var/lib/minimint";
-      description = "The data directory for minimint.";
+      default = "/var/lib/fedimint";
+      description = "The data directory for fedimint.";
     };
     user = mkOption {
       type = types.str;
-      default = "minimint";
-      description = "The user as which to run minimint.";
+      default = "fedimint";
+      description = "The user as which to run fedimint.";
     };
     group = mkOption {
       type = types.str;
       default = cfg.user;
-      description = "The group as which to run minimint.";
+      description = "The group as which to run fedimint.";
     };
     package = mkOption {
       type = types.package;
-      default = config.nix-bitcoin.pkgs.minimint;
-      defaultText = "config.nix-bitcoin.pkgs.minimint";
-      description = "The package providing minimint binaries.";
+      default = config.nix-bitcoin.pkgs.fedimint;
+      defaultText = "config.nix-bitcoin.pkgs.fedimint";
+      description = "The package providing fedimint binaries.";
     };
   };
 
-  cfg = config.services.minimint;
+  cfg = config.services.fedimint;
   nbLib = config.nix-bitcoin.lib;
   nbPkgs = config.nix-bitcoin.pkgs;
   runAsUser = config.nix-bitcoin.runAsUserCmd;
@@ -69,7 +69,7 @@ in {
     systemd.tmpfiles.rules = [
       "d '${cfg.dataDir}' 0770 ${cfg.user} ${cfg.group} - -"
     ];
-    systemd.services.minimint = {
+    systemd.services.fedimint = {
       wantedBy = [ "multi-user.target" ];
       requires = [ "bitcoind.service" ];
       after = [ "bitcoind.service" ];
@@ -77,7 +77,7 @@ in {
         if [ -f "${cfg.dataDir}/server-0.json" ]; then
           exit 0
         fi
-        ${config.nix-bitcoin.pkgs.minimint}/bin/configgen ${cfg.dataDir} 1 4000 5000 1 10 100 1000 10000 100000 1000000
+        ${cfg.package}/bin/configgen ${cfg.dataDir} 1 4000 5000 1 10 100 1000 10000 100000 1000000
         sed -i -e "s/127.0.0.1:18443/${nbLib.addressWithPort bitcoind.rpc.address bitcoind.rpc.port}/g" ${cfg.dataDir}/server-0.json
         sed -i -e 's/user": "bitcoin"/user": "${bitcoind.rpc.users.public.name}"/g' ${cfg.dataDir}/server-0.json
         PASS=$(cat ${secretsDir}/bitcoin-rpcpassword-public)
@@ -86,7 +86,7 @@ in {
       serviceConfig = nbLib.defaultHardening // {
         WorkingDirectory = cfg.dataDir;
         ExecStart = ''
-          ${cfg.package}/bin/minimint ${cfg.dataDir}/server-0.json ${cfg.dataDir}/mint-0.db
+          ${cfg.package}/bin/fedimintd ${cfg.dataDir}/server-0.json ${cfg.dataDir}/mint-0.db
         '';
         User = cfg.user;
         Group = cfg.group;

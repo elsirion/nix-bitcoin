@@ -162,7 +162,7 @@
   # Enable this module to use Fedimint, a federated Chaumian e-cash 
   # mint backed by bitcoin with deposits and withdrawals that can 
   # occur on-chain or via Lightning.
-  services.minimint.enable = true;
+  services.fedimint.enable = true;
   services.fedimint-gateway.enable = true;
 
   ### Hardware wallets

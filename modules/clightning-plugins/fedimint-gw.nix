@@ -20,8 +20,8 @@ let cfg = config.services.clightning.plugins.fedimint-gw; in
     };
     package = mkOption {
       type = types.package;
-      default = config.nix-bitcoin.pkgs.minimint;
-      defaultText = "config.nix-bitcoin.pkgs.minimint";
+      default = config.nix-bitcoin.pkgs.fedimint;
+      defaultText = "config.nix-bitcoin.pkgs.fedimint";
       description = "The package providing the lightning gateway binaries.";
     };
   };
@@ -29,7 +29,7 @@ let cfg = config.services.clightning.plugins.fedimint-gw; in
   config = mkIf cfg.enable {
     services.clightning.extraConfig = ''
       plugin=${cfg.package}/bin/ln_gateway
-      minimint-cfg=${cfg.dataDir}
+      fedimint-cfg=${cfg.dataDir}
     '';
   };
 }

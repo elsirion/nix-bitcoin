@@ -16,7 +16,7 @@ let self = {
   joinmarket = pkgs.callPackage ./joinmarket { nbPythonPackageOverrides = import ./python-packages self; };
   lndinit = pkgs.callPackage ./lndinit { };
   liquid-swap = pkgs.python3Packages.callPackage ./liquid-swap { };
-  minimint = pkgs.callPackage ./minimint { };
+  fedimint = pkgs.callPackage ./fedimint { };
   rtl = pkgs.callPackage ./rtl { };
   # The secp256k1 version used by joinmarket
   secp256k1 = pkgs.callPackage ./secp256k1 { };

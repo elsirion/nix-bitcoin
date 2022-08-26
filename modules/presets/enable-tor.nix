@@ -34,7 +34,7 @@ in {
     # but we restrict them to Tor just to be safe.
     #
     electrs = defaultEnforceTor;
-    # minimint = defaultEnforceTor;
+    # fedimint = defaultEnforceTor;
     nbxplorer = defaultEnforceTor;
     rtl = defaultEnforceTor;
     joinmarket = defaultEnforceTor;
@@ -49,7 +49,7 @@ in {
     electrs.enable = defaultTrue;
     spark-wallet.enable = defaultTrue;
     joinmarket-ob-watcher.enable = defaultTrue;
-    minimint.enable = defaultTrue;
+    fedimint.enable = defaultTrue;
     rtl.enable = defaultTrue;
   };
 }
