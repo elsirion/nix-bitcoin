@@ -28,6 +28,7 @@
     ./hardware-wallets.nix
     ./fedimint.nix
     ./fedimint-gateway.nix
+    ./fedimint-helper.nix
     # Support features
     ./versioning.nix
     ./security.nix
