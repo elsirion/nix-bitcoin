@@ -5,7 +5,7 @@ let
   options.services.fedimint-helper = {
     enable = mkOption {
       type = types.bool;
-      default = true;
+      default = false;
       description = ''
         LN faucet
       '';
@@ -26,7 +26,7 @@ let
     };
     user = mkOption {
       type = types.str;
-      default = "fedimint";
+      default = "clightning";
       description = "The user as which to run fedimint.";
     };
     group = mkOption {
@@ -60,7 +60,6 @@ in {
         CONNECT_STRING = cfg.connect;
       };
       serviceConfig = nbLib.defaultHardening // {
-        WorkingDirectory = "${cfg.package}/bin";
         ExecStart = "${cfg.package}/bin/faucet.py";
         User = cfg.user;
         Group = cfg.group;
