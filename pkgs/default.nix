@@ -13,6 +13,7 @@ let self = {
   clightning-rest = pkgs.callPackage ./clightning-rest { inherit (self) fetchNodeModules; };
   clboss = pkgs.callPackage ./clboss { };
   clightning-plugins = pkgs.recurseIntoAttrs (import ./clightning-plugins pkgs self.nbPython3Packages);
+  fedimint = pkgs.callPackage ./fedimint { };
   joinmarket = pkgs.callPackage ./joinmarket { nbPythonPackageOverrides = import ./python-packages self; };
   lndinit = pkgs.callPackage ./lndinit { };
   liquid-swap = pkgs.python3Packages.callPackage ./liquid-swap { };
