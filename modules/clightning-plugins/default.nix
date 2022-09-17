@@ -14,6 +14,7 @@ let
 in {
   imports = [
     ./clboss.nix
+    ./fedimint-gateway.nix
     ./feeadjuster.nix
     ./prometheus.nix
     ./summary.nix
