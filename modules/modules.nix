@@ -29,6 +29,7 @@
     ./joinmarket-ob-watcher.nix
     ./hardware-wallets.nix
     ./fedimint.nix
+    ./fedimint-faucet.nix
 
     # Support features
     ./versioning.nix
