@@ -4,10 +4,10 @@ let
   inherit (pkgs) lib;
 
   src = pkgs.fetchFromGitHub {
-    owner = "lightningd";
+    owner = "elsirion";
     repo = "plugins";
-    rev = "e625369423b00c70b23641662f62ccd898286edc";
-    sha256 = "04f30xlfr7pgdmdgka87x7sc9j82wc4zv7fbiqrjsc83dkmly81i";
+    rev = "ea0f2e6895549930cf10c39b540a1616ccee89e2";
+    sha256 = "1hgq2i3jcdz5f3lk6f36wppy6q059x9x9c68g4zv2n57q8yb5a6b";
   };
 
   version = builtins.substring 0 7 src.rev;
@@ -19,6 +19,7 @@ let
     };
     feeadjuster = {
       description = "Dynamically changes channel fees to keep your channels more balanced";
+      extraPkgs = [ semver ];
     };
     helpme = {
       description = "Walks you through setting up a c-lightning node, offering advice for common problems";
