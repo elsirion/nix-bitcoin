@@ -49,7 +49,6 @@ in {
     environment.systemPackages = [ cfg.package ];
     services.bitcoind = {
       enable = true;
-      txindex = true;
     };
     systemd.tmpfiles.rules = [
       "d '${cfg.dataDir}' 0770 ${cfg.user} ${cfg.group} - -"
