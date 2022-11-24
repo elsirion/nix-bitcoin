@@ -60,7 +60,7 @@ in {
       serviceConfig = nbLib.defaultHardening // {
         WorkingDirectory = cfg.dataDir;
         ExecStart = ''
-          ${cfg.package}/bin/fedimintd ${cfg.dataDir} supersecurepassword 5001
+          ${cfg.package}/bin/fedimintd ${cfg.dataDir} password
         '';
         User = cfg.user;
         Group = cfg.group;
