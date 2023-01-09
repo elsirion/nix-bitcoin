@@ -57,10 +57,13 @@ in {
       wantedBy = [ "multi-user.target" ];
       requires = [ "bitcoind.service" ];
       after = [ "bitcoind.service" ];
+      environment = {
+        FM_PASSWORD  = "password"; # FIXME: use secrets
+      };
       serviceConfig = nbLib.defaultHardening // {
         WorkingDirectory = cfg.dataDir;
         ExecStart = ''
-          ${cfg.package}/bin/fedimintd ${cfg.dataDir} password
+          ${cfg.package}/bin/fedimintd ${cfg.dataDir} --ui-bind 127.0.0.1:8172
         '';
         User = cfg.user;
         Group = cfg.group;
