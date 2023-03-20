@@ -4,10 +4,10 @@ let
   inherit (pkgs) lib;
 
   src = pkgs.fetchFromGitHub {
-    owner = "lightningd";
+    owner = "elsirion";
     repo = "plugins";
-    rev = "e625369423b00c70b23641662f62ccd898286edc";
-    sha256 = "04f30xlfr7pgdmdgka87x7sc9j82wc4zv7fbiqrjsc83dkmly81i";
+    rev = "b469687b4a83052bdf5abfb5a048377b1ae2cf0a";
+    sha256 = "sha256-i3xbCDxodqSjBh36lnF8PpqRrau0I+2h5WiiulMrdzI=";
   };
 
   version = builtins.substring 0 7 src.rev;
