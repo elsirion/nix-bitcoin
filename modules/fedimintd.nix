@@ -2,6 +2,7 @@
 
 with lib;
 let
+  # TODO: move this to flake.nix?
   fedimint-pkg = (import
       (
         fetchTarball {
@@ -109,7 +110,7 @@ in {
       };
     };
 
-  config = mkIf cfg.enable {
+    config = mkIf cfg.enable {
       environment.systemPackages = [ cfg.package ];
       systemd.tmpfiles.rules = [
         "d '${cfg.dataDir}' 0770 ${cfg.user} ${cfg.group} - -"
@@ -118,18 +119,16 @@ in {
         wantedBy = [ "multi-user.target" ];
         requires = [ "bitcoind.service" ];
         after = [ "bitcoind.service" ];
-        serviceConfig = {
-          WorkingDirectory = cfg.dataDir;
+        serviceConfig = nbLib.defaultHardening // {
           ExecStart = ''
             ${startScript}/bin/fedimintd-start
           '';
           User = cfg.user;
-          Group = cfg.group;
-          Restart = "always";
+          Restart = "on-failure";
           RestartSec = "20s";
-          ReadWritePaths = cfg.dataDir;
+          ReadWritePaths = [ cfg.dataDir ] ;
           LimitNOFILE = "550000";
-        };
+        } // nbLib.allowAllIPAddresses;
       };
 
       users.users.${cfg.user} = {
