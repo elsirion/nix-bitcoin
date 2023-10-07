@@ -202,6 +202,7 @@ let
       services.joinmarket.enable = true;
       services.joinmarket-ob-watcher.enable = true;
       services.backups.enable = true;
+      services.fedimintd.enable = true;
 
       nix-bitcoin.nodeinfo.enable = true;
 
