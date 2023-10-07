@@ -52,23 +52,23 @@ in {
       };
 
       p2pBind = mkOption {
-        type = types.string;
+        type = types.str;
         default = "0.0.0.0:8173";
       };
 
       p2pUrl = mkOption {
-        type = types.string;
+        type = types.str;
         example = "fedimint://example.com:8173";
         description = "Address under which the API is publicly reachable";
       };
 
       apiBind = mkOption {
-        type = types.string;
+        type = types.str;
         default = "0.0.0.0:8174";
       };
 
       apiUrl = mkOption {
-        type = types.string;
+        type = types.str;
         example = "wss://fm-api.example.com";
         description = "Address under which the API is publicly reachable. Use `wss://` if your API is behind a TLS-enabled proxy, `ws://` if running as a plain HTTP server (insecure).";
       };
