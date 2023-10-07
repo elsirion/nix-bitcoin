@@ -31,7 +31,7 @@ let
       FM_BIND_P2P="${cfg.p2pBind}" \
       FM_BIND_API="${cfg.apiBind}" \
       FM_BITCOIN_RPC_KIND=bitcoind \
-      FM_BITCOIN_RPC_URL="public:$BTC_RPC_PASSWORD@${cfg.bitcoindRpcAddr}" \
+      FM_BITCOIN_RPC_URL="http://public:$BTC_RPC_PASSWORD@${cfg.bitcoindRpcAddr}" \
       FM_P2P_URL="${cfg.p2pUrl}" \
       FM_API_URL="${cfg.apiUrl}" \
     ${cfg.package}/bin/fedimintd \
