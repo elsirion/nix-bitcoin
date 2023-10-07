@@ -116,6 +116,8 @@ in {
       ];
       systemd.services.fedimint = {
         wantedBy = [ "multi-user.target" ];
+        requires = [ "bitcoind.service" ];
+        after = [ "bitcoind.service" ];
         serviceConfig = {
           WorkingDirectory = cfg.dataDir;
           ExecStart = ''
